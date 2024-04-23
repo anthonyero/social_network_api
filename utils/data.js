@@ -67,7 +67,11 @@ const reactionsData = [
 ]
 
 const getRandomUser = (arr) => {
-	return arr[Math.floor(Math.random() * arr.length)].username
+	return arr[Math.floor(Math.random() * arr.length)].username;
 }
 
-console.log(getRandomUser(usersData))
+const getRandomReaction = (arr) => {
+	return arr[Math.floor(Math.random() * arr.length)];
+}
+
+module.exports = { getRandomUser, getRandomReaction };
