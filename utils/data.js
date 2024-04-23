@@ -65,3 +65,9 @@ const reactionsData = [
 	'Strongly disagree',
 	'Delete the app'
 ]
+
+const getRandomUser = (arr) => {
+	return arr[Math.floor(Math.random() * arr.length)].username
+}
+
+console.log(getRandomUser(usersData))
