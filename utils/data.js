@@ -33,7 +33,6 @@ const thoughtsData = [
 	{
 		thoughtText: `I'm using a NoSQL database for this social network API.`,
 		username: 'johnsmith'
-
 	},
 	{
 		thoughtText: 'A new social network?',
