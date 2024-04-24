@@ -74,4 +74,15 @@ const getRandomReaction = () => {
 	return reactionsData[Math.floor(Math.random() * reactionsData.length)];
 }
 
-module.exports = { getRandomUser, getRandomReaction };
+const getRandomReactionObject = (int) => {
+	const results = [];
+	for (let i = 0; i < int; i++) {
+		results.push({
+			reactionBody: getRandomReaction(),
+			username: getRandomUser()
+		});
+	}
+	return results;
+}
+
+module.exports = { getRandomUser, getRandomReaction, getRandomReactionObject};
