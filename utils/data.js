@@ -66,12 +66,12 @@ const reactionsData = [
 	'Delete the app'
 ]
 
-const getRandomUser = (arr) => {
-	return arr[Math.floor(Math.random() * arr.length)].username;
+const getRandomUser = () => {
+	return usersData[Math.floor(Math.random() * usersData.length)].username;
 }
 
-const getRandomReaction = (arr) => {
-	return arr[Math.floor(Math.random() * arr.length)];
+const getRandomReaction = () => {
+	return reactionsData[Math.floor(Math.random() * reactionsData.length)];
 }
 
 module.exports = { getRandomUser, getRandomReaction };
