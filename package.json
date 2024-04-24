@@ -12,7 +12,7 @@
   "scripts": {
     "start": "node server",
     "dev": "nodemon server",
-    "seed": "node util/seed"
+    "seed": "node utils/seed"
   },
   "dependencies": {
     "express": "^4.19.2",
