@@ -1,6 +1,6 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models').length
-const { getRandomUser, getRandomReaction } = require('./data');
+const { usersData, thoughtsData, getRandomUser, getRandomReaction, getRandomReactionObject } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -16,4 +16,17 @@ connection.once('open', async () => {
 	if (thoughtCheck.length) {
 		await.connection.dropCollection('users');
 	};
+
+	// Array to store a list of constructed thoughts
+	const thoughts = []
+
+	// We have 7 thoughts 
+	for (let i = 0; i < 7; i++) {
+		const reactions = getRandomReactionObject(2); // 2 Reactions per thought
+
+		const 
+
+
+	}
+
 })
