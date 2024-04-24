@@ -24,5 +24,16 @@ module.exports = {
 		}
 	},
 
+	// Create a new user
+
+	async createNewUser(req, res) {
+		try {
+			const userData = await User.create(req.body);
+			res.status(201).json(userData)
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	}
+
 
 }
