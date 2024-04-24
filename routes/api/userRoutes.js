@@ -1,13 +1,16 @@
 const router = require('express').Router();
 const {
-	getUsers
+	getUsers,
+	getSingleUser
 } = require('../../controllers/userController.js');
 
 // Endpoint: `/api/users`
-
 router.route('/')
-	.get(getUsers);
+	.get(getUsers)
 
+// Endpoint: `/api/users/userId`
+router.route('/:userId')
+	.get(getSingleUser)
 
 
 module.exports = router;
