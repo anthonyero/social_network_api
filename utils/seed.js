@@ -14,7 +14,7 @@ connection.once('open', async () => {
 
 	let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
 	if (thoughtCheck.length) {
-		await connection.dropCollection('users');
+		await connection.dropCollection('thoughts');
 	};
 
 	// Array to store a list of constructed thoughts
@@ -23,7 +23,6 @@ connection.once('open', async () => {
 	// We have 7 thoughts 
 	for (let i = 0; i < thoughtsData.length; i++) {
 		const reactions = getRandomReactionObject(2); // 2 Reactions per thought
-		// console.log(reactions)
 
 		const thoughtText = thoughtsData[i].thoughtText;
 		const username = thoughtsData[i].username;
@@ -34,10 +33,8 @@ connection.once('open', async () => {
 			reactions
 		});
 	};
-	// console.table(thoughts);
 	// Add thoughts to the collection
 	const thoughtsObjectsData = await Thought.create(thoughts);
-	console.log('Did not make it past Thought creation')
 	// Create 6 users and only attaches reactions with the same username as the user document
 	for (let i = 0; i < usersData.length; i++) {
 		await User.create({
