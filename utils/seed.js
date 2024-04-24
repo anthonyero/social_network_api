@@ -48,6 +48,8 @@ connection.once('open', async () => {
 	};
 
 	// let seededUserData = await connection.db.listCollections({ name: 'users' }).toArray();
+	
+	// To populate friends, collect all inserted data and randomly select a user object to pass 
 	// if (seededUserData.length){
 	// 	for (let i = 0; i < seededUserData.length; i++){
 	// 		await User.findOneAndUpdate(
@@ -61,6 +63,7 @@ connection.once('open', async () => {
 	// };
 
 	// Log out the seed data
+	// console.table(seededUserData);
 	console.table(thoughts);
 	console.info('Seeding complete');
 	process.exit(0);
