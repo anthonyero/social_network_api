@@ -34,7 +34,6 @@ module.exports = {
 		}
 	},
 
-
 	// Update a user's information
 	async updateUser(req, res) {
 		try {
@@ -46,10 +45,30 @@ module.exports = {
 
 			// I don't believe this is accessible/implemented because when an incorrect userId is submitted, we receive an object with the error
 			if (!userData) {
-				return res.status(404).json({message: "No user found with that id values"});
+				return res.status(404).json({ message: 'No user found with that id value' });
 			}
 
 			res.status(201).json(userData);
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	},
+
+	// Delete a user 
+
+	async deleteUser(req, res) {
+		try {
+			const userData = await User.findOneAndDelete({ _id: req.params.userId });
+
+			if (!userData) {
+				return res.status(404).json({ message: 'No user found with that id value' });
+			};
+
+			// We will also want to delete a user's thoughts. Have to do this manually; no cascade functionality like SQL
+			// Would prefer to use id to delete but the Thoughts schema does not have userId associated with it
+				// The reason it would be preferred is because usernames can be changed 
+			await Thought.deleteMany({ username: userData.username });
+			res.status(200).json({ message: 'User and their respective Thoughts were successfully deleted' });	
 		} catch (err) {
 			res.status(500).json(err);
 		}

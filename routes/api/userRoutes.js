@@ -3,7 +3,8 @@ const {
 	getUsers,
 	getSingleUser,
 	createNewUser,
-	updateUser
+	updateUser,
+	deleteUser
 } = require('../../controllers/userController.js');
 
 // Endpoint: `/api/users`
@@ -16,6 +17,7 @@ router.route('/')
 router.route('/:userId')
 	.get(getSingleUser)
 	.put(updateUser)
+	.delete(deleteUser)
 
 
 module.exports = router;
