@@ -85,4 +85,4 @@ const getRandomReactionObject = (int) => {
 	return results;
 }
 
-module.exports = { getRandomUser, getRandomReaction, getRandomReactionObject};
+module.exports = { usersData, thoughtsData, getRandomUser, getRandomReaction, getRandomReactionObject};
