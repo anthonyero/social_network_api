@@ -72,7 +72,28 @@ module.exports = {
 		} catch (err) {
 			res.status(500).json(err);
 		}
-	}
+	},
+
+	// Adding another user to a user's friend's list
+		// Note: This does not automatically add the user to the friend's friends list. 
+		// May be a good exercise for future development
+
+	async addFriend(req, res) {
+		try {
+			const updateUserData = await User.findOneAndUpdate(
+				{ _id: req.params.userId},
+				{$addToSet: { friends: req.params.friendId }},
+				{ runValidators: true, new: true }
+			);
+
+			if (!updateUserData) {
+				return res.status(404).json({ message: 'No user found with that id value' });
+			};
+			res.status(201).json(updateUserData)
+		} catch (err) {
+			res.status(500).json(err);
+		}	
+	},
 
 
 }
