@@ -42,4 +42,23 @@ module.exports = {
 			res.status(500).json(err);
 		}
 	},
+
+	// Update a thought
+	async updateThought(req, res) {
+		try {
+			const thoughtData = await Thought.findOneAndUpdate(
+				{ _id: req.params.thoughtId},
+				{ $set: { thoughtText: req.body.thoughtText, username: req.body.username }},
+				{ runValidators: true, new: true }
+			);
+
+			if (!thoughtData) {
+				return res.status(404).json({ message: 'No thought found with that id value' });
+			}
+
+			res.status(201).json(thoughtData);
+		} catch (err) {
+			res.status(500).json(err);
+		}
+	}
 }
