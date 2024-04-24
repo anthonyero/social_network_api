@@ -24,9 +24,20 @@ connection.once('open', async () => {
 	for (let i = 0; i < 7; i++) {
 		const reactions = getRandomReactionObject(2); // 2 Reactions per thought
 
-		const 
+		const thoughtText = thoughtsData[i].thoughtText;
+		const username = thoughtsData[i].username;
 
+		thoughts.push({
+			thoughtText,
+			username,
+			reactions
+		});
+	};
 
-	}
+	// Add thoughts to the collection
+	const thoughtsData = await Thought.create(thoughts);
+
+	
+
 
 })
