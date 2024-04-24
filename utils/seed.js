@@ -43,9 +43,22 @@ connection.once('open', async () => {
 			thoughts: [...thoughtsObjectsData.filter(function({username}) {
 				return username === usersData[i].username;
 			})], // This will only assign thoughts that contain the same username as the created users
-			friends: []
+			friends: [] // Explore options to populate through seeds. May require saving all users data and updating users accordingly
 		});
 	};
+
+	// let seededUserData = await connection.db.listCollections({ name: 'users' }).toArray();
+	// if (seededUserData.length){
+	// 	for (let i = 0; i < seededUserData.length; i++){
+	// 		await User.findOneAndUpdate(
+	// 			{ _id: seededUserData[i]['_id']},
+	// 			{ $addToSet: { friends: [function () {
+	// 				return seededUserData[Math.floor(Math.random() * seededUserData.length)] }]
+	// 			}}
+	// 		);
+	// 	}
+
+	// };
 
 	// Log out the seed data
 	console.table(thoughts);
